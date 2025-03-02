@@ -51,20 +51,20 @@
 }
 
 .uploaded-file-container {
-  position:absolute;
+  position: absolute;
   text-align: center;
   left: 50%;
   top: 50%;
-  transform:translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   text-align: center;
-  
+
 }
 
 .uploaded-file-container h2 {
   font-size: 1.2em;
   font-weight: bold;
   padding: 0px;
-  margin:  0px 0px 3px 0px;
+  margin: 0px 0px 3px 0px;
 }
 
 .uploaded-file-container p {
