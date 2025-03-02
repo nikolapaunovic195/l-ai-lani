@@ -36,7 +36,7 @@ const Header = ({ selectedFile }) => {
       >
         <img src={logo} alt="Lailani Logo" className="logo" />
         <p className="app-title">l(ai)lani</p>
-        {/* Invisible button covering the logo and text */}
+        {/* */}
         <button className="invisible-button" onClick={reloadPage}></button>
       </div>
       <div className="uploaded-file-container">
