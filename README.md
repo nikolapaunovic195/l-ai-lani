@@ -30,5 +30,5 @@ We used React as a front end, and Flask for the backend. Our main logic for gath
 - Patrick Gatpandan - Front-end developer
 - Xiaojun Gong - Front-end developer
 
-© 2025 snail pace creations. All rights reserved.
+© 2025 snail pace creations. All rights reserved. <br>
 This software and its contents may not be copied, modified, or distributed without explicit permission from snail pace creations.
