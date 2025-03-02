@@ -6,7 +6,7 @@ Studying complex topics can be overwhelming, especially when faced with dense te
 
 # Technologies We Used
 
-We used React as a front end, and Flask for the backend. Our main logic for gathering information and communicating with the API's were done using Python. We used Perplexity AI and their sonar and sonar-deep-research models for our Research and Deep Research functionality, while incorporating groq's quick AI inference for Notes file ingest, as well as for collecting topics for creating the flashcards. 
+We used React as a front end, and Flask for the backend. Our main logic for gathering information and communicating with the API's were done using Python. We used Perplexity AI and their sonar and sonar-deep-research models for our Research and Deep Research functionality, while incorporating Groq's quick AI inference for notes file ingest, as well as for collecting topics for creating the flashcards. 
 
 # Core Features
 
