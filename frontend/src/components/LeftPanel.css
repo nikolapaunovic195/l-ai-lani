@@ -1,0 +1,82 @@
+.left-panel {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 350px;
+  height: 525px;
+  /* Slightly increased height to fit more topics */
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  font-family: "Playfair Display", serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Move "Topics" text to the top-left */
+.left-panel h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  margin-top: 0px;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+}
+
+/* Topics List */
+.topics-list {
+  flex-grow: 1;
+  /* Expands to take available space */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 400px;
+  /* Increased height */
+  overflow-y: auto;
+  /* Enables scrolling */
+  padding-right: 5px;
+}
+
+/* Topic container */
+.topic {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #D3C9E5;
+  padding: 10px;
+  border-radius: 5px;
+  background: white;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+}
+
+/* Buttons stay at the bottom */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: auto;
+  /* Ensures buttons stick to the bottom */
+  padding-top: 10px;
+}
+
+/* Smaller buttons that fit properly */
+.flashcards-btn,
+.research-btn,
+.deep-research-btn {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 15px;
+  background: #574D68;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  font-size: 0.9rem;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+
+.flashcards-btn:hover,
+.research-btn:hover,
+.deep-research-btn:hover {
+  background: #A093C7;
+}

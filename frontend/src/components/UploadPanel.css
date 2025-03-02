@@ -1,0 +1,54 @@
+.upload-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.upload-container {
+    text-align: center;
+}
+
+/* Upload button: Bigger when centered */
+.upload-btn {
+    background: #574D68;
+    color: white;
+    padding: 16px 32px;
+    /* Bigger size */
+    cursor: pointer;
+    border-radius: 30px;
+    /* More rounded */
+    font-size: 1.2rem;
+    /* Bigger text */
+    border: none;
+    transition: all 0.3s ease-in-out;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+/* Upload button: Smaller when moved to the top */
+.small-upload .upload-btn {
+    padding: 10px 20px;
+    /* Smaller */
+    font-size: 1rem;
+    border-radius: 20px;
+}
+
+/* No file chosen text is below button */
+.file-name {
+    display: block;
+    margin-top: 28px;
+    font-size: 1rem;
+    color: #555;
+    font-family: Arial, sans-serif;
+}
+
+/* Move Upload Button to Top After File is Uploaded & Align with Header */
+.small-upload {
+    position: absolute;
+    top: 37px;
+    /* Adjusted to match header text */
+    right: 50%;
+    transform: translateX(50%);
+    margin-top: 0;
+}
