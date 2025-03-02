@@ -24,8 +24,11 @@ We used React as a front end, and Flask for the backend. Our main logic for gath
 - Research Mode: Uses Perplexity AI for AI-driven explanations
 - Deep Research Mode: Provides in-depth analysis with Sonar Deep Research
 
-  # Contributors
+# Contributors
 - Nikola Paunovic - Back-end developer
 - Rowwel Ponesto - Back-end developer
 - Patrick Gatpandan - Front-end developer
 - Xiaojun Gong - Front-end developer
+
+© 2025 snail pace creations. All rights reserved. <br>
+This software and its contents may not be copied, modified, or distributed without explicit permission from snail pace creations.
