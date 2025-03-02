@@ -1,14 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 5px 15px;
+  /* Reduced padding for a smaller height */
   background: #F9F5F1;
   color: black;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  /* Slightly smaller text */
   font-weight: normal;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
   font-family: "Playfair Display", serif;
+  height: 75px;
+  /* Decreased header height */
 }
 
 /* Logo + Text container */
@@ -19,14 +25,16 @@
 
 /* Logo Image */
 .logo {
-  width: 60px; /* Adjust size as needed */
-  height: 60px;
-  margin-right: 5px; /* Space between logo and text */
+  width: 55px;
+  /* Smaller logo */
+  height: 55px;
+  margin-right: 5px;
 }
 
 /* App Title: l(ai)lani */
 .app-title {
-  font-size: 1.5rem;
-  font-weight: normal;
+  font-size: 1.6rem;
+  /* Reduced text size */
+  font-weight: bold;
   font-family: "Playfair Display", serif;
 }

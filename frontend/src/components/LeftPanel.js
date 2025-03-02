@@ -1,24 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../components/LeftPanel.css";
 
 const LeftPanel = () => {
-  // Topics state will hold the list fetched from the backend
-  const [topics, setTopics] = useState([]);
+  // Hardcoded topics - replace this with your data later
+  const topics = [
+    "RSA Encryption",
+    "Diffie-Hellman",
+    "Symmetric Encryption",
+    "Digital Signatures",
+    "Hash Functions",
+    "Public Key Infrastructure",
+    "Key Management",
+    "Block Ciphers",
+    "Stream Ciphers",
+    "Message Authentication Codes"
+  ];
+
   // State to track which topics are selected
   const [selectedTopics, setSelectedTopics] = useState({});
-
-  // Fetch topics from backend when the component mounts
-  useEffect(() => {
-    // Replace 'sample.pdf' with your actual file path if necessary
-    fetch("/get_topics/sample.pdf")
-      .then((response) => response.json())
-      .then((data) => {
-        setTopics(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching topics:", error);
-      });
-  }, []);
 
   // Handle checkbox changes
   const handleTopicChange = (topic) => {
@@ -32,8 +31,9 @@ const LeftPanel = () => {
   const handleButtonClick = (buttonLabel) => {
     // Get only the selected topics (where value is true)
     const selectedTopicsList = Object.keys(selectedTopics).filter(
-      (topic) => selectedTopics[topic]
+      topic => selectedTopics[topic]
     );
+
     // Print the button label and selected topics to console
     console.log(`Button clicked: ${buttonLabel}`);
     console.log("Selected topics:", selectedTopicsList);

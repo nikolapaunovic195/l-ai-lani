@@ -7,10 +7,12 @@ import "./App.css";
 
 function App() {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [topics, setTopics] = useState([]);
   const [showPanels, setShowPanels] = useState(false);
 
-  const handleFileUpload = (file) => {
+  const handleFileUpload = ({ file, topics }) => {
     setSelectedFile(file);
+    setTopics(topics);
     setShowPanels(true);
   };
 
@@ -21,7 +23,7 @@ function App() {
       {showPanels && (
         <main className="main-content">
           <div className="panel-container">
-            <LeftPanel />
+            <LeftPanel topics={topics} />
             <RightPanel />
           </div>
         </main>

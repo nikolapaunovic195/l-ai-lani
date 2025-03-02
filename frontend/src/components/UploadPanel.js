@@ -13,7 +13,7 @@ const UploadPanel = ({ onFileUpload, showPanels }) => {
   return (
     <section className={`upload-section ${showPanels ? "small-upload" : ""}`}>
       <div className="upload-container">
-        <label htmlFor="file-upload" className="upload-btn">Upload Files</label>
+        <label htmlFor="file-upload" className="upload-btn">Upload File</label>
         <input type="file" id="file-upload" accept=".pdf, .doc, .docx, .txt, .md" onChange={handleFileChange} hidden />
         {!showPanels && <span className="file-name">{selectedFile || "No file chosen"}</span>}
       </div>

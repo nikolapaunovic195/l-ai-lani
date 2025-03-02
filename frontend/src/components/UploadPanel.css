@@ -52,3 +52,38 @@
     transform: translateX(50%);
     margin-top: 0;
 }
+
+.upload-message {
+    font-size: 1.2rem;
+    font-family: "Playfair Display", serif;
+    color: #574D68;
+    text-align: center;
+    margin-bottom: 55px; /* Space between message and upload box */
+    font-weight: bold;
+    font-size: 50;
+}
+
+/* Container for title and subtitle */
+.upload-message-container {
+    text-align: center;
+    max-width: 650px;
+    margin-bottom: 20px;
+}
+
+/* Title */
+.upload-title {
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: "Playfair Display", serif;
+    color: #4f455f;
+    margin-bottom: 10px;
+}
+
+/* Subtitle */
+.upload-subtitle {
+    font-size: 1.2rem;
+    font-family: "Playfair Display", serif;
+    color: rgb(54, 45, 69);
+    line-height: 1.4;
+}
+

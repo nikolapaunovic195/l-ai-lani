@@ -3,8 +3,8 @@
   padding: 20px;
   border-radius: 10px;
   width: 350px;
-  height: 525px;
-  /* Slightly increased height to fit more topics */
+  height: 95%;
+  /* Matches right panel but keeps space at the bottom */
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
   text-align: left;
   font-family: "Playfair Display", serif;
@@ -24,14 +24,11 @@
 /* Topics List */
 .topics-list {
   flex-grow: 1;
-  /* Expands to take available space */
+  /* Ensures topics list expands */
   display: flex;
   flex-direction: column;
   gap: 8px;
-  max-height: 400px;
-  /* Increased height */
   overflow-y: auto;
-  /* Enables scrolling */
   padding-right: 5px;
 }
 
@@ -55,7 +52,8 @@
   gap: 10px;
   margin-top: auto;
   /* Ensures buttons stick to the bottom */
-  padding-top: 10px;
+  padding-bottom: 15px;
+  /* Adds space between buttons and bottom */
 }
 
 /* Smaller buttons that fit properly */
