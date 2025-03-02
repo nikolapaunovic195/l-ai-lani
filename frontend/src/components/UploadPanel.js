@@ -61,7 +61,7 @@ const UploadPanel = ({ onFileUpload, showPanels, setLoadingState }) => {
         </div>
       )}
       <div className="upload-box fade-in-up delay-1">
-        <label htmlFor="file-upload" className="upload-btn">Upload File</label>
+        <label htmlFor="file-upload" className="upload-btn">Upload PDF</label>
         <input
           type="file"
           id="file-upload"
