@@ -14,6 +14,12 @@ We used React as a front end, and Flask for the backend. Our main logic for gath
 - Upload PDFs, DOCs, TXTs, and Markdown files
 - AI scans the file and extracts important topics automatically
 
+# Design
+
+Below are the design principles that guided our Lailani visuals.
+
+![lailani_thumbnail](imgs/lailani_design_principles.jpg)
+
 # Flashcard Generation
 
 - Groq AI instantly creates flashcards based on uploaded content
