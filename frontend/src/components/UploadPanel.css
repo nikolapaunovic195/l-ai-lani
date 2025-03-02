@@ -29,9 +29,14 @@
 /* Upload button: Smaller when moved to the top */
 .small-upload .upload-btn {
     padding: 10px 20px;
+    top: 10px; /* Adjusts the spacing from the top */
+    bottom: 10px; /* Ensures equal spacing from the bottom */
     /* Smaller */
     font-size: 1rem;
     border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* No file chosen text is below button */
@@ -46,9 +51,10 @@
 /* Move Upload Button to Top After File is Uploaded & Align with Header */
 .small-upload {
     position: absolute;
-    top: 37px;
+    top: 3.75%;
+    bottom: 3.75%;
     /* Adjusted to match header text */
-    right: 50%;
+    right: 6%;
     transform: translateX(50%);
     margin-top: 0;
 }

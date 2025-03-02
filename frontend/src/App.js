@@ -10,7 +10,8 @@ function App() {
   const [topics, setTopics] = useState([]);
   const [showPanels, setShowPanels] = useState(false);
 
-  const handleFileUpload = ({ file, topics }) => {
+  // Ensure the function correctly handles file & topics
+  const handleFileUpload = (file, topics = []) => {
     setSelectedFile(file);
     setTopics(topics);
     setShowPanels(true);

@@ -1,21 +1,9 @@
 import React, { useState } from "react";
 import "../components/LeftPanel.css";
 
-const LeftPanel = () => {
-  // Hardcoded topics - replace this with your data later
-  const topics = [
-    "RSA Encryption",
-    "Diffie-Hellman",
-    "Symmetric Encryption",
-    "Digital Signatures",
-    "Hash Functions",
-    "Public Key Infrastructure",
-    "Key Management",
-    "Block Ciphers",
-    "Stream Ciphers",
-    "Message Authentication Codes"
-  ];
+var backend_response = null;
 
+const LeftPanel = ({ topics }) => {
   // State to track which topics are selected
   const [selectedTopics, setSelectedTopics] = useState({});
 
@@ -34,9 +22,40 @@ const LeftPanel = () => {
       topic => selectedTopics[topic]
     );
 
-    // Print the button label and selected topics to console
-    console.log(`Button clicked: ${buttonLabel}`);
-    console.log("Selected topics:", selectedTopicsList);
+    // Create a JSON object with the button label and selected topics
+    const data = {
+      option: buttonLabel,
+      topics: selectedTopicsList
+    };
+
+    // Print the JSON object to the console
+    console.log("Data:", data);
+    console.log(JSON.stringify(data, null, 2));
+
+    // Send the data to the backend and handle the response
+    fetch("http://localhost:5000/send_selected", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    }).then(response => {
+      if (response.ok) {
+        console.log("Data sent successfully");
+        backend_response = response;
+        response.json().then(data => {
+          console.log("Response from backend:", data);
+          // Optionally update state based on backend response
+
+
+          
+        });
+      } else {
+        console.error("Error sending data");
+      }
+    }).catch(error => {
+      console.error("Error:", error);
+    });
   };
 
   return (
@@ -57,19 +76,19 @@ const LeftPanel = () => {
       <div className="button-group">
         <button
           className="flashcards-btn"
-          onClick={() => handleButtonClick("Generate Flashcards")}
+          onClick={() => handleButtonClick("flashcards")}
         >
           Generate Flashcards
         </button>
         <button
           className="research-btn"
-          onClick={() => handleButtonClick("Research")}
+          onClick={() => handleButtonClick("research")}
         >
           Research
         </button>
         <button
           className="deep-research-btn"
-          onClick={() => handleButtonClick("Deep Research")}
+          onClick={() => handleButtonClick("deep")}
         >
           Deep Research
         </button>

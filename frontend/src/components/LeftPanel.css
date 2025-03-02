@@ -50,9 +50,9 @@
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  margin-top: auto;
+  margin-top: 25px;
   /* Ensures buttons stick to the bottom */
-  padding-bottom: 15px;
+  padding-bottom: 10px;
   /* Adds space between buttons and bottom */
 }
 

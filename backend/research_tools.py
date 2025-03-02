@@ -36,8 +36,8 @@ def get_perplexity_prompt(subject):
     return response.choices[0].message.content
 
 
-def get_deep_research(perplexity_prompt):
-    print("Deep researching with Perplexity...")
+def get_shallow_research(perplexity_prompt):
+    print("Shallow researching with Perplexity...")
     url = "https://api.perplexity.ai/chat/completions"
 
     payload = {
@@ -45,9 +45,9 @@ def get_deep_research(perplexity_prompt):
         "messages": [
             {
                 "role": "system",
-                "content": "You are performing deep research on the topic provided. Explain as much about the topic as possible while being accurate and precise.",
+                "content": "You are performing shallow research on the question provided. Explain as much about the question as possible while being accurate and precise. Include citations within the text. Format the output using markdown. Do not include thinking, output only the results of research.",
             },
-            {"role": "User", "content": perplexity_prompt},
+            {"role": "user", "content": perplexity_prompt},
         ],
     }
 
@@ -61,10 +61,63 @@ def get_deep_research(perplexity_prompt):
         response.raise_for_status()  # Raises an error if status code is 4xx/5xx
         
         data = response.json()
-        print("Full API Response:", data)  # Debugging: Print the entire response
+        # print("Full API Response:", data)  # Debugging: Print the entire response
 
         if "choices" in data and len(data["choices"]) > 0:
-            return data["choices"][0]["message"]["content"]
+            # return data["choices"][0]["message"]["content"]
+            response_dict = {
+                "research_results": data["choices"][0]["message"]["content"],
+                "citations": data["citations"]
+            }
+            
+            return response_dict
+
+        elif "error" in data:
+            return f"API Error: {data['error']}"  # If API returned an error message
+        else:
+            return "Unexpected API response format."
+
+    except requests.exceptions.RequestException as e:
+        return f"API request error: {e}"
+    except (KeyError, IndexError):
+        return "Unexpected response structure from Perplexity API."
+
+def get_deep_research(perplexity_prompt):
+    print("Deep researching with Perplexity...")
+    url = "https://api.perplexity.ai/chat/completions"
+
+    payload = {
+        "model": "sonar-deep-research",
+        "messages": [
+            {
+                "role": "system",
+                "content": "You are performing deep research on the question provided. Explain as much about the question as possible while being accurate and precise. Include citations within the text. Format the output using markdown. Do not include thinking, output only the results of research.",
+            },
+            {"role": "user", "content": perplexity_prompt},
+        ],
+    }
+
+    headers = {
+        "Authorization": f"Bearer {perplexity_api_key}",
+        "Content-Type": "application/json",
+    }
+
+    try:
+        response = requests.post(url, json=payload, headers=headers)
+        response.raise_for_status()  # Raises an error if status code is 4xx/5xx
+        
+        data = response.json()
+        # print("Full API Response:", data)  # Debugging: Print the entire response
+
+        if "choices" in data and len(data["choices"]) > 0:
+            # return data["choices"][0]["message"]["content"]
+            response_dict = {
+                "research_results": data["choices"][0]["message"]["content"],
+                "citations": data["citations"]
+            }
+            
+            return response_dict
+
         elif "error" in data:
             return f"API Error: {data['error']}"  # If API returned an error message
         else:

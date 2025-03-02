@@ -1,9 +1,35 @@
 .right-panel {
-    flex-grow: 1;
-    background: white;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
-    height: 95%;
-    font-family: "Playfair Display", serif;
+  flex-grow: 1;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+  font-family: "Playfair Display", serif;
+}
+
+/* Flashcards Layout */
+.flashcard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Flashcard Styling */
+.flashcard {
+  background: #F0EBFF;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Flashcard Text */
+.flashcard-question {
+  font-weight: bold;
+  color: #574D68;
+}
+
+.flashcard-answer {
+  color: #4f455f;
+  margin-top: 5px;
 }
