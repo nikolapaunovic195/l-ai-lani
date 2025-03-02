@@ -12,31 +12,27 @@
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
   font-family: "Playfair Display", serif;
   height: 75px;
-  position: relative; /* Required for absolute positioning inside */
+  position: relative;
 }
 
-/* Logo + Text */
 .logo-container {
   display: flex;
   align-items: center;
-  position: relative; /* Required for button to be positioned inside */
+  position: relative;
 }
 
-/* Logo Image */
 .logo {
   width: 55px;
   height: 55px;
   margin-right: 5px;
 }
 
-/* App Title */
 .app-title {
   font-size: 1.6rem;
   font-weight: bold;
   font-family: "Playfair Display", serif;
 }
 
-/* ✅ Invisible button that covers the logo + title */
 .invisible-button {
   position: absolute;
   top: 0;
@@ -50,8 +46,8 @@
 
 .uploaded-file {
   position: absolute;
-  right: 20%; /* ✅ Moves it toward the center */
-  transform: translateX(50%); /* ✅ Ensures it's correctly aligned */
+  right: 20%;
+  transform: translateX(50%);
 }
 
 .uploaded-file-container {

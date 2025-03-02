@@ -13,31 +13,27 @@ function App() {
   const [researchText, setResearchText] = useState("");
   const [deepResearchText, setDeepResearchText] = useState("");
 
-  // Handle file upload
   const handleFileUpload = (file, topics = []) => {
     setSelectedFile(file);
     setTopics(topics);
     setShowPanels(true);
   };
 
-  // Function to update flashcards when received from LeftPanel
   const handleFlashcardsUpdate = (newFlashcards) => {
     setFlashcards(newFlashcards);
-    setResearchText(""); // Clear other content types
+    setResearchText("");
     setDeepResearchText("");
   };
 
-  // Function to update research text
   const handleResearchUpdate = (text) => {
     setResearchText(text);
-    setFlashcards([]); // Clear other content types
+    setFlashcards([]);
     setDeepResearchText("");
   };
 
-  // Function to update deep research text
   const handleDeepResearchUpdate = (text) => {
     setDeepResearchText(text);
-    setFlashcards([]); // Clear other content types
+    setFlashcards([]);
     setResearchText("");
   };
 

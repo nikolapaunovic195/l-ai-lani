@@ -7,7 +7,6 @@ const LeftPanel = ({ topics: initialTopics, updateFlashcards, updateResearch, up
   const [editIndex, setEditIndex] = useState(null);
   const [editValue, setEditValue] = useState("");
 
-  // Toggle the checkbox state
   const handleTopicChange = (topic) => {
     setSelectedTopics((prev) => ({
       ...prev,
@@ -15,13 +14,11 @@ const LeftPanel = ({ topics: initialTopics, updateFlashcards, updateResearch, up
     }));
   };
 
-  // Start editing topic
   const startEditing = (index) => {
     setEditIndex(index);
     setEditValue(topics[index]);
   };
 
-  // Finish editing topic
   const finishEditing = (index) => {
     const updated = [...topics];
     updated[index] = editValue;
@@ -30,7 +27,6 @@ const LeftPanel = ({ topics: initialTopics, updateFlashcards, updateResearch, up
     setEditValue("");
   };
 
-  // Handle "Enter" or "Escape" key events in edit mode
   const handleKeyDown = (e, index) => {
     if (e.key === "Enter") {
       finishEditing(index);
@@ -40,7 +36,6 @@ const LeftPanel = ({ topics: initialTopics, updateFlashcards, updateResearch, up
     }
   };
 
-  // Function to handle button clicks (flashcards, research, deep research)
   const handleButtonClick = (buttonLabel) => {
     const selectedTopicsList = topics.filter((topic) => selectedTopics[topic]);
     if (selectedTopicsList.length === 0) {
@@ -80,7 +75,7 @@ const LeftPanel = ({ topics: initialTopics, updateFlashcards, updateResearch, up
         
         else if (buttonLabel === "research") {
           if (data.message && data.message.research_results) {
-            updateResearch(data.message.research_results); // ✅ Extracts correct research text
+            updateResearch(data.message.research_results);
           } else {
             updateResearch("No research results found.");
           }
@@ -88,7 +83,7 @@ const LeftPanel = ({ topics: initialTopics, updateFlashcards, updateResearch, up
         
         else if (buttonLabel === "deep") {
           if (data.message && data.message.research_results) {
-            updateDeepResearch(data.message.research_results); // ✅ Extracts correct deep research text
+            updateDeepResearch(data.message.research_results); 
           } else {
             updateDeepResearch("No deep research results found.");
           }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import ReactMarkdown from "react-markdown"; // ✅ Import Markdown renderer
+import ReactMarkdown from "react-markdown";
 import "../components/RightPanel.css";
 import logo_mono from "../assets/lailani_monochrome_icon_800.png";
 
@@ -8,7 +8,6 @@ const RightPanel = ({ flashcards, researchText, deepResearchText }) => {
     const [reloadKey, setReloadKey] = useState(0);
     const logoRef = useRef(null);
 
-    // 3D tilt effect for the logo
     const handleMouseMove = (event) => {
         if (!logoRef.current) return;
         const { clientX, clientY } = event;
@@ -27,14 +26,12 @@ const RightPanel = ({ flashcards, researchText, deepResearchText }) => {
         logoRef.current.style.transform = "perspective(500px) rotateX(0deg) rotateY(0deg)";
     };
 
-    // Ensure flashcards reload correctly
     useEffect(() => {
         if (flashcards && flashcards.length > 0) {
             setReloadKey((prev) => prev + 1);
         }
     }, [flashcards]);
 
-    // Toggle flashcard flip state
     const handleFlip = (index) => {
         setFlipped((prev) => ({
             ...prev,
@@ -42,7 +39,6 @@ const RightPanel = ({ flashcards, researchText, deepResearchText }) => {
         }));
     };
 
-    // If no content exists, show the welcome message
     if (
         (!flashcards || flashcards.length === 0) &&
         (!researchText || researchText.trim() === "") &&
@@ -66,7 +62,6 @@ const RightPanel = ({ flashcards, researchText, deepResearchText }) => {
         );
     }
 
-    // ✅ Render the flashcards subpanel
     if (flashcards && flashcards.length > 0) {
         return (
             <section className="right-panel fade-in-up delay-1">
@@ -96,28 +91,26 @@ const RightPanel = ({ flashcards, researchText, deepResearchText }) => {
         );
     }
 
-    // ✅ Render the research subpanel with formatted Markdown
     if (researchText && researchText.trim() !== "") {
         return (
             <section className="right-panel fade-in-up delay-1">
                 <div className="text-subpanel">
                     <h2>Research</h2>
                     <div className="text-content">
-                        <ReactMarkdown>{researchText}</ReactMarkdown> {/* ✅ Converts Markdown to HTML */}
+                        <ReactMarkdown>{researchText}</ReactMarkdown> {}
                     </div>
                 </div>
             </section>
         );
     }
 
-    // ✅ Render the deep research subpanel with formatted Markdown
     if (deepResearchText && deepResearchText.trim() !== "") {
         return (
             <section className="right-panel fade-in-up delay-1">
                 <div className="text-subpanel">
                     <h2>Deep Research</h2>
                     <div className="text-content">
-                        <ReactMarkdown>{deepResearchText}</ReactMarkdown> {/* ✅ Converts Markdown to HTML */}
+                        <ReactMarkdown>{deepResearchText}</ReactMarkdown> {}
                     </div>
                 </div>
             </section>

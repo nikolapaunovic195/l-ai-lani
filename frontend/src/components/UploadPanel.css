@@ -9,29 +9,23 @@
     text-align: center;
 }
 
-/* Upload button: Bigger when centered */
 .upload-btn {
     background: #574D68;
     color: white;
     padding: 16px 32px;
-    /* Bigger size */
     cursor: pointer;
     border-radius: 30px;
-    /* More rounded */
     font-size: 1.2rem;
-    /* Bigger text */
     border: none;
     transition: all 0.3s ease-in-out;
     font-family: Arial, sans-serif;
     font-weight: bold;
 }
 
-/* Upload button: Smaller when moved to the top */
 .small-upload .upload-btn {
     padding: 10px 20px;
-    top: 10px; /* Adjusts the spacing from the top */
-    bottom: 10px; /* Ensures equal spacing from the bottom */
-    /* Smaller */
+    top: 10px;
+    bottom: 10px;
     font-size: 1rem;
     border-radius: 20px;
     display: flex;
@@ -39,7 +33,6 @@
     justify-content: center;
 }
 
-/* No file chosen text is below button */
 .file-name {
     display: block;
     margin-top: 28px;
@@ -48,12 +41,10 @@
     font-family: Arial, sans-serif;
 }
 
-/* Move Upload Button to Top After File is Uploaded & Align with Header */
 .small-upload {
     position: absolute;
     top: 3.75%;
     bottom: 3.75%;
-    /* Adjusted to match header text */
     right: 6%;
     transform: translateX(50%);
     margin-top: 0;
@@ -64,19 +55,17 @@
     font-family: "Playfair Display", serif;
     color: #574D68;
     text-align: center;
-    margin-bottom: 55px; /* Space between message and upload box */
+    margin-bottom: 55px;
     font-weight: bold;
     font-size: 50;
 }
 
-/* Container for title and subtitle */
 .upload-message-container {
     text-align: center;
     max-width: 650px;
     margin-bottom: 20px;
 }
 
-/* Title */
 .upload-title {
     font-size: 2rem;
     font-weight: bold;
@@ -85,7 +74,6 @@
     margin-bottom: 10px;
 }
 
-/* Subtitle */
 .upload-subtitle {
     font-size: 1.2rem;
     font-family: "Playfair Display", serif;

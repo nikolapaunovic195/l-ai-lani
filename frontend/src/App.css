@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 
 .app {
-  background: #F9F5F1; /* Soft Cream Background */
-  height: 100vh; /* Ensures the page takes up exactly the full viewport height */
+  background: #F9F5F1;
+  height: 100vh; 
   min-height: 100vh;
   text-align: center;
-  overflow: hidden; /* Prevents scrolling */
+  overflow: hidden;
 }
 
 .panel-container {

@@ -19,12 +19,9 @@ const UploadPanel = ({ onFileUpload, showPanels }) => {
         .then(response => {
           if (response.ok) {
             console.log("File uploaded successfully");
-            // Fetch topics from the backend
             fetch("http://localhost:5000/get_topics")
               .then(response => response.json())
               .then(data => {
-                // Assume the returned data is either an array of topics
-                // or an object with a 'topics' property
                 const topics = data.topics || data;
                 onFileUpload(file, topics);
               })
@@ -42,7 +39,6 @@ const UploadPanel = ({ onFileUpload, showPanels }) => {
           onFileUpload(file, []);
         });
     } else {
-      // For non-PDF files or if no file was selected, call onFileUpload with empty topics
       onFileUpload(file, []);
     }
   };

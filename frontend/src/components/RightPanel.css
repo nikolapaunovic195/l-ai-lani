@@ -11,8 +11,6 @@
   height: 95%;
 }
 
-
-/* Empty state styling */
 .right-panel-empty {
   display: flex;
   flex-direction: column;
@@ -21,7 +19,6 @@
   height: 100%;
 }
 
-/* Shared subpanel styles */
 .flashcards-subpanel,
 .text-subpanel {
   height: 100%;
@@ -36,7 +33,6 @@
   font-weight: bold;
 }
 
-/* Flashcard grid: 4 columns as requested */
 .flashcard-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -44,16 +40,12 @@
   padding: 10px;
   overflow-y: auto;
   max-height: calc(100% - 50px);
-  /* Adjust based on header height */
 }
 
-/* Flashcard styles - MUCH more vertical as requested */
 .flashcard {
   width: 100%;
   height: 400px;
-  /* Increased height to make cards more vertical */
   perspective: 1500px;
-  /* Deeper perspective for better 3D effect */
   cursor: pointer;
   position: relative;
   margin-bottom: 10px;
@@ -74,14 +66,12 @@
   transform: rotateY(180deg);
 }
 
-/* White cards with black text as requested */
 .flashcard-front,
 .flashcard-back {
   position: absolute;
   width: 100%;
   height: 100%;
   -webkit-backface-visibility: hidden;
-  /* Safari */
   backface-visibility: hidden;
   display: flex;
   align-items: center;
@@ -92,7 +82,6 @@
   padding: 15px;
   box-sizing: border-box;
   overflow: auto;
-  /* Ensure text doesn't overflow */
 }
 
 .flashcard-front {
@@ -104,18 +93,14 @@
   transform: rotateY(180deg);
 }
 
-/* Updated text styling with differentiation between front and back */
 .flashcard-front p {
   width: 100%;
   word-wrap: break-word;
   overflow-wrap: break-word;
   margin: 0;
   font-size: 1.3rem;
-  /* Bigger font on front side */
   font-weight: 700;
-  /* Thicker font on front side */
   color: #000;
-  /* Darker font on front side */
   line-height: 1.4;
 }
 
@@ -125,20 +110,15 @@
   overflow-wrap: break-word;
   margin: 0;
   font-size: 1rem;
-  /* Normal size on back side */
   font-weight: 400;
-  /* Normal weight on back side */
   color: #333;
-  /* Slightly lighter on back side */
   line-height: 1.5;
 }
 
-/* Text panels styling */
 .text-content {
   padding: 15px;
   overflow-y: auto;
   max-height: calc(100% - 50px);
-  /* Adjust based on header height */
   background: white;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
@@ -146,7 +126,6 @@
   line-height: 1.6;
 }
 
-/* Animation classes */
 .fade-in-up {
   opacity: 0;
   transform: translateY(20px);
@@ -176,7 +155,6 @@
   }
 }
 
-/* Ensure flashcard flip doesn't get clipped */
 .flashcards-subpanel {
   overflow: visible;
 }
@@ -184,16 +162,12 @@
 .flashcard-grid {
   overflow-y: auto;
   overflow-x: visible;
-  /* Ensures the flip animation doesn't get clipped horizontally */
   padding: 10px 20px;
-  /* Extra horizontal padding to prevent clipping */
 }
 
-/* Additional adjustments to improve aspect ratio */
 @media (max-width: 1200px) {
   .flashcard {
     height: 250px;
-    /* Slightly shorter on smaller screens but still vertical */
   }
 
   .flashcard-front p {

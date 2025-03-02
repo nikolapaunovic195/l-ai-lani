@@ -9,25 +9,13 @@ UPLOAD_FOLDER = './uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 CORS(app)
 
-"""
-List of selected topics example:
-{
-    "option": "flashcards",
-    "topics": [
-        "Symmetric Encryption Algorithms",
-        "Asymmetric Encryption Algorithms"
-    ]
-}
-"""
-
-# Original topics from pdf
 @app.route("/get_topics")
 def topic_list():
     try:
         md_text = get_text_from_pdf(f"{app.config['UPLOAD_FOLDER']}/file.pdf")
-        topics = get_list_of_topics(md_text)
-        return jsonify(topics.split("\n"))
-        
+        topics = get_list_of_topics(md_text).split("\n")
+        topics = [topic for topic in topics if topic.strip()]
+        return jsonify(topics)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
@@ -36,7 +24,6 @@ def topic_list():
 def upload_file():
     file = request.files.get('file')
     if file:
-        # Process the PDF file as needed
         file.save(f"{app.config['UPLOAD_FOLDER']}/file.pdf")
         return jsonify({"message": "File uploaded successfully"}), 200
     return jsonify({"error": "No file provided"}), 400

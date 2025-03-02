@@ -4,7 +4,6 @@
   border-radius: 10px;
   width: 350px;
   height: 95%;
-  /* Matches right panel but keeps space at the bottom */
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
   text-align: left;
   font-family: "Playfair Display", serif;
@@ -12,7 +11,6 @@
   flex-direction: column;
 }
 
-/* Move "Topics" text to the top-left */
 .left-panel h2 {
   font-size: 1.5rem;
   margin-bottom: 20px;
@@ -21,7 +19,6 @@
   font-weight: bold;
 }
 
-/* Topics List with fade effect using mask-image */
 .topics-list {
   flex-grow: 1;
   display: flex;
@@ -31,11 +28,9 @@
   padding-right: 5px;
   position: relative;
 
-  /* Firefox scrollbar styling */
   scrollbar-width: thin;
   scrollbar-color: #ccc transparent;
 
-  /* Fade effect at the top and bottom via mask */
   -webkit-mask-image: linear-gradient(to bottom,
       transparent 0px,
       black 20px,
@@ -48,7 +43,6 @@
       transparent 100%);
 }
 
-/* Webkit scrollbar styling */
 .topics-list::-webkit-scrollbar {
   width: 10px;
 }
@@ -66,7 +60,6 @@
   display: none;
 }
 
-/* Topic container */
 .topic {
   display: flex;
   align-items: center;
@@ -81,7 +74,6 @@
   font-weight: bold;
 }
 
-/* Minimal styling for the three-dot edit button */
 .topic .edit-button {
   background: none;
   border: none;
@@ -90,18 +82,14 @@
   padding: 0 6px;
 }
 
-/* Buttons stay at the bottom */
 .button-group {
   display: flex;
   justify-content: space-between;
   gap: 10px;
   margin-top: 25px;
-  /* Ensures buttons stick to the bottom */
   padding-bottom: 10px;
-  /* Adds space between buttons and bottom */
 }
 
-/* Smaller buttons that fit properly */
 .flashcards-btn,
 .research-btn,
 .deep-research-btn {
