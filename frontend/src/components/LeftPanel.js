@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../components/LeftPanel.css";
 
-const LeftPanel = ({ topics: initialTopics, updateFlashcards, updateResearch, updateDeepResearch }) => {
+const LeftPanel = ({ topics: initialTopics, updateFlashcards, updateResearch, updateDeepResearch, setLoadingState }) => {
   const [topics, setTopics] = useState(initialTopics);
   const [selectedTopics, setSelectedTopics] = useState({});
   const [editIndex, setEditIndex] = useState(null);
@@ -43,6 +43,9 @@ const LeftPanel = ({ topics: initialTopics, updateFlashcards, updateResearch, up
       return;
     }
 
+    // Set loading state to true
+    setLoadingState(true);
+
     const data = {
       option: buttonLabel,
       topics: selectedTopicsList
@@ -70,22 +73,25 @@ const LeftPanel = ({ topics: initialTopics, updateFlashcards, updateResearch, up
           } else {
             console.warn("No flashcards received from backend.");
             updateFlashcards([]);
+            setLoadingState(false);
           }
-        } 
-        
+        }
+
         else if (buttonLabel === "research") {
           if (data.message && data.message.research_results) {
             updateResearch(data.message.research_results);
           } else {
             updateResearch("No research results found.");
+            setLoadingState(false);
           }
-        } 
-        
+        }
+
         else if (buttonLabel === "deep") {
           if (data.message && data.message.research_results) {
-            updateDeepResearch(data.message.research_results); 
+            updateDeepResearch(data.message.research_results);
           } else {
             updateDeepResearch("No deep research results found.");
+            setLoadingState(false);
           }
         }
       })
@@ -98,6 +104,7 @@ const LeftPanel = ({ topics: initialTopics, updateFlashcards, updateResearch, up
         } else if (buttonLabel === "deep") {
           updateDeepResearch("Error fetching deep research. Check console.");
         }
+        setLoadingState(false); // Set loading state to false on error
       });
   };
 

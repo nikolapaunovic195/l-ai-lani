@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../components/UploadPanel.css";
 
-const UploadPanel = ({ onFileUpload, showPanels }) => {
+const UploadPanel = ({ onFileUpload, showPanels, setLoadingState }) => {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = async (event) => {
@@ -9,6 +9,8 @@ const UploadPanel = ({ onFileUpload, showPanels }) => {
     setSelectedFile(file ? file.path : "No file chosen");
 
     if (file && file.type === "application/pdf") {
+      setLoadingState(true); // Set loading state to true
+
       const formData = new FormData();
       formData.append("file", file);
 
@@ -24,19 +26,23 @@ const UploadPanel = ({ onFileUpload, showPanels }) => {
               .then(data => {
                 const topics = data.topics || data;
                 onFileUpload(file, topics);
+                setLoadingState(false); // Set loading state to false when done
               })
               .catch(error => {
                 console.error("Error fetching topics:", error);
                 onFileUpload(file, []);
+                setLoadingState(false); // Set loading state to false on error
               });
           } else {
             console.error("File upload failed");
             onFileUpload(file, []);
+            setLoadingState(false); // Set loading state to false on error
           }
         })
         .catch(error => {
           console.error("Error during file upload:", error);
           onFileUpload(file, []);
+          setLoadingState(false); // Set loading state to false on error
         });
     } else {
       onFileUpload(file, []);
@@ -55,7 +61,7 @@ const UploadPanel = ({ onFileUpload, showPanels }) => {
         </div>
       )}
       <div className="upload-box fade-in-up delay-1">
-        <label htmlFor="file-upload" className="upload-btn">Upload PDF</label>
+        <label htmlFor="file-upload" className="upload-btn">Upload File</label>
         <input
           type="file"
           id="file-upload"

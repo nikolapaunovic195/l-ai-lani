@@ -12,6 +12,7 @@ function App() {
   const [flashcards, setFlashcards] = useState([]);
   const [researchText, setResearchText] = useState("");
   const [deepResearchText, setDeepResearchText] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleFileUpload = (file, topics = []) => {
     setSelectedFile(file);
@@ -23,24 +24,31 @@ function App() {
     setFlashcards(newFlashcards);
     setResearchText("");
     setDeepResearchText("");
+    setIsLoading(false);
   };
 
   const handleResearchUpdate = (text) => {
     setResearchText(text);
     setFlashcards([]);
     setDeepResearchText("");
+    setIsLoading(false);
   };
 
   const handleDeepResearchUpdate = (text) => {
     setDeepResearchText(text);
     setFlashcards([]);
     setResearchText("");
+    setIsLoading(false);
+  };
+
+  const setLoadingState = (isLoading) => {
+    setIsLoading(isLoading);
   };
 
   return (
-    <div className="app">
+    <div className={`app ${isLoading ? 'app-loading' : ''}`}>
       <Header selectedFile={selectedFile} />
-      <UploadPanel onFileUpload={handleFileUpload} showPanels={showPanels} />
+      <UploadPanel onFileUpload={handleFileUpload} showPanels={showPanels} setLoadingState={setLoadingState} />
       {showPanels && (
         <main className="main-content">
           <div className="panel-container">
@@ -49,11 +57,13 @@ function App() {
               updateFlashcards={handleFlashcardsUpdate}
               updateResearch={handleResearchUpdate}
               updateDeepResearch={handleDeepResearchUpdate}
+              setLoadingState={setLoadingState}
             />
             <RightPanel 
               flashcards={flashcards} 
               researchText={researchText}
               deepResearchText={deepResearchText}
+              isLoading={isLoading}
             />
           </div>
         </main>

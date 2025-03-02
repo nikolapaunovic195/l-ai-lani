@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 
 .app {
-  background: #F9F5F1;
-  height: 100vh; 
+  height: 100vh;
   min-height: 100vh;
   text-align: center;
   overflow: hidden;
@@ -14,4 +13,24 @@
   padding: 20px;
   justify-content: center;
   height: calc(100vh - 140px);
+}
+
+.app {
+  min-height: 100vh;
+  background-color: #f9f5f1;
+  transition: background-color 1s ease;
+}
+
+.app-loading {
+  animation: backgroundPulse 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundPulse {
+  0% {
+    background-color: #f9f5f1;
+  }
+
+  100% {
+    background-color: #f0ebff;
+  }
 }
