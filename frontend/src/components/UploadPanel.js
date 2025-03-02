@@ -51,14 +51,14 @@ const UploadPanel = ({ onFileUpload, showPanels }) => {
     <section className={`upload-section ${showPanels ? "small-upload" : ""}`}>
       {!showPanels && (
         <div className="upload-message-container">
-          <h1 className="upload-title">AI-Powered Study Companion</h1>
-          <p className="upload-subtitle">
+          <h1 className="upload-title fade-in-up delay-2">AI-Powered Study Companion</h1>
+          <p className="upload-subtitle fade-in-up delay-3">
             Upload your notes, slides, or documents and watch l(ai)lani transform them into
             interactive flashcards and insightful research materials—effortlessly
           </p>
         </div>
       )}
-      <div className="upload-box">
+      <div className="upload-box fade-in-up delay-1">
         <label htmlFor="file-upload" className="upload-btn">Upload File</label>
         <input
           type="file"

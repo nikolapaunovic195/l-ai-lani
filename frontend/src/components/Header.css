@@ -53,3 +53,34 @@
   right: 20%; /* ✅ Moves it toward the center */
   transform: translateX(50%); /* ✅ Ensures it's correctly aligned */
 }
+
+.uploaded-file-container {
+  position:absolute;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  transform:translate(-50%,-50%);
+  text-align: center;
+  
+}
+
+.uploaded-file-container h2 {
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 0px;
+  margin:  0px 0px 3px 0px;
+}
+
+.uploaded-file-container p {
+  font-size: 1.0em;
+  font-family: Arial, sans-serif;
+  padding: 0px;
+  margin: 0px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: transform 0.1s ease;
+}

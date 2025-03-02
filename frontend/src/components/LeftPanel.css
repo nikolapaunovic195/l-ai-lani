@@ -21,21 +21,57 @@
   font-weight: bold;
 }
 
-/* Topics List */
+/* Topics List with fade effect using mask-image */
 .topics-list {
   flex-grow: 1;
-  /* Ensures topics list expands */
   display: flex;
   flex-direction: column;
   gap: 8px;
   overflow-y: auto;
   padding-right: 5px;
+  position: relative;
+
+  /* Firefox scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+
+  /* Fade effect at the top and bottom via mask */
+  -webkit-mask-image: linear-gradient(to bottom,
+      transparent 0px,
+      black 20px,
+      black calc(100% - 20px),
+      transparent 100%);
+  mask-image: linear-gradient(to bottom,
+      transparent 0px,
+      black 20px,
+      black calc(100% - 20px),
+      transparent 100%);
+}
+
+/* Webkit scrollbar styling */
+.topics-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.topics-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.topics-list::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+.topics-list::-webkit-scrollbar-button {
+  display: none;
 }
 
 /* Topic container */
 .topic {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  height: 40px;
   gap: 10px;
   border: 1px solid #D3C9E5;
   padding: 10px;
@@ -43,6 +79,15 @@
   background: white;
   font-family: Arial, sans-serif;
   font-weight: bold;
+}
+
+/* Minimal styling for the three-dot edit button */
+.topic .edit-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0 6px;
 }
 
 /* Buttons stay at the bottom */
@@ -67,7 +112,7 @@
   color: white;
   border: none;
   cursor: pointer;
-  transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
   font-size: 0.9rem;
   font-weight: bold;
   font-family: Arial, sans-serif;
@@ -77,4 +122,34 @@
 .research-btn:hover,
 .deep-research-btn:hover {
   background: #A093C7;
+  transform: scale(1.05);
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.delay-0 {
+  animation-delay: 0s;
+}
+
+.delay-1 {
+  animation-delay: 0.3s;
+}
+
+.delay-2 {
+  animation-delay: 0.6s;
+}
+
+.delay-3 {
+  animation-delay: 0.9s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

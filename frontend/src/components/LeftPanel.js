@@ -1,95 +1,164 @@
 import React, { useState } from "react";
 import "../components/LeftPanel.css";
 
-var backend_response = null;
-
-const LeftPanel = ({ topics }) => {
-  // State to track which topics are selected
+const LeftPanel = ({ topics: initialTopics, updateFlashcards, updateResearch, updateDeepResearch }) => {
+  const [topics, setTopics] = useState(initialTopics);
   const [selectedTopics, setSelectedTopics] = useState({});
+  const [editIndex, setEditIndex] = useState(null);
+  const [editValue, setEditValue] = useState("");
 
-  // Handle checkbox changes
+  // Toggle the checkbox state
   const handleTopicChange = (topic) => {
-    setSelectedTopics({
-      ...selectedTopics,
-      [topic]: !selectedTopics[topic]
-    });
+    setSelectedTopics((prev) => ({
+      ...prev,
+      [topic]: !prev[topic]
+    }));
   };
 
-  // Function to handle button clicks
-  const handleButtonClick = (buttonLabel) => {
-    // Get only the selected topics (where value is true)
-    const selectedTopicsList = Object.keys(selectedTopics).filter(
-      topic => selectedTopics[topic]
-    );
+  // Start editing topic
+  const startEditing = (index) => {
+    setEditIndex(index);
+    setEditValue(topics[index]);
+  };
 
-    // Create a JSON object with the button label and selected topics
+  // Finish editing topic
+  const finishEditing = (index) => {
+    const updated = [...topics];
+    updated[index] = editValue;
+    setTopics(updated);
+    setEditIndex(null);
+    setEditValue("");
+  };
+
+  // Handle "Enter" or "Escape" key events in edit mode
+  const handleKeyDown = (e, index) => {
+    if (e.key === "Enter") {
+      finishEditing(index);
+    } else if (e.key === "Escape") {
+      setEditIndex(null);
+      setEditValue("");
+    }
+  };
+
+  // Function to handle button clicks (flashcards, research, deep research)
+  const handleButtonClick = (buttonLabel) => {
+    const selectedTopicsList = topics.filter((topic) => selectedTopics[topic]);
+    if (selectedTopicsList.length === 0) {
+      console.warn("No topics selected.");
+      return;
+    }
+
     const data = {
       option: buttonLabel,
       topics: selectedTopicsList
     };
+    console.log("Data sent to backend:", JSON.stringify(data, null, 2));
 
-    // Print the JSON object to the console
-    console.log("Data:", data);
-    console.log(JSON.stringify(data, null, 2));
-
-    // Send the data to the backend and handle the response
     fetch("http://localhost:5000/send_selected", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(data)
-    }).then(response => {
-      if (response.ok) {
-        console.log("Data sent successfully");
-        backend_response = response;
-        response.json().then(data => {
-          console.log("Response from backend:", data);
-          // Optionally update state based on backend response
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Response from backend:", data);
 
-
-          
-        });
-      } else {
-        console.error("Error sending data");
-      }
-    }).catch(error => {
-      console.error("Error:", error);
-    });
+        if (buttonLabel === "flashcards") {
+          if (Array.isArray(data) && data.length > 0) {
+            const formattedFlashcards = data.map((flashcard) => ({
+              question: flashcard.side_a,
+              answer: flashcard.side_b
+            }));
+            updateFlashcards(formattedFlashcards);
+          } else {
+            console.warn("No flashcards received from backend.");
+            updateFlashcards([]);
+          }
+        } 
+        
+        else if (buttonLabel === "research") {
+          if (data.message && data.message.research_results) {
+            updateResearch(data.message.research_results); // ✅ Extracts correct research text
+          } else {
+            updateResearch("No research results found.");
+          }
+        } 
+        
+        else if (buttonLabel === "deep") {
+          if (data.message && data.message.research_results) {
+            updateDeepResearch(data.message.research_results); // ✅ Extracts correct deep research text
+          } else {
+            updateDeepResearch("No deep research results found.");
+          }
+        }
+      })
+      .catch((error) => {
+        console.error(`Error fetching ${buttonLabel}:`, error);
+        if (buttonLabel === "flashcards") {
+          updateFlashcards([{ question: "Error", answer: "Failed to fetch flashcards." }]);
+        } else if (buttonLabel === "research") {
+          updateResearch("Error fetching research. Check console.");
+        } else if (buttonLabel === "deep") {
+          updateDeepResearch("Error fetching deep research. Check console.");
+        }
+      });
   };
 
   return (
-    <section className="left-panel">
+    <section className="left-panel fade-in-up delay-0">
       <h2>Topics</h2>
       <div className="topics-list scrollable">
         {topics.map((topic, index) => (
-          <label key={index} className="topic">
-            <input
-              type="checkbox"
-              checked={selectedTopics[topic] || false}
-              onChange={() => handleTopicChange(topic)}
-            />
-            <span>{topic}</span>
-          </label>
+          <div key={index} className="topic fade-in-up" style={{ animationDelay: `${index * 0.2}s` }}>
+            <label
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                flexGrow: 1,
+                cursor: "pointer"
+              }}
+            >
+              <input
+                type="checkbox"
+                checked={selectedTopics[topic] || false}
+                onChange={() => handleTopicChange(topic)}
+              />
+              {editIndex === index ? (
+                <input
+                  autoFocus
+                  value={editValue}
+                  onChange={(e) => setEditValue(e.target.value)}
+                  onBlur={() => finishEditing(index)}
+                  onKeyDown={(e) => handleKeyDown(e, index)}
+                />
+              ) : (
+                <span>{topic}</span>
+              )}
+            </label>
+            <button
+              className="edit-button"
+              onClick={(e) => {
+                e.stopPropagation();
+                startEditing(index);
+              }}
+            >
+              ...
+            </button>
+          </div>
         ))}
       </div>
+
       <div className="button-group">
-        <button
-          className="flashcards-btn"
-          onClick={() => handleButtonClick("flashcards")}
-        >
+        <button className="flashcards-btn" onClick={() => handleButtonClick("flashcards")}>
           Generate Flashcards
         </button>
-        <button
-          className="research-btn"
-          onClick={() => handleButtonClick("research")}
-        >
+        <button className="research-btn" onClick={() => handleButtonClick("research")}>
           Research
         </button>
-        <button
-          className="deep-research-btn"
-          onClick={() => handleButtonClick("deep")}
-        >
+        <button className="deep-research-btn" onClick={() => handleButtonClick("deep")}>
           Deep Research
         </button>
       </div>

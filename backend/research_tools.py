@@ -45,7 +45,7 @@ def get_shallow_research(perplexity_prompt):
         "messages": [
             {
                 "role": "system",
-                "content": "You are performing shallow research on the question provided. Explain as much about the question as possible while being accurate and precise. Include citations within the text. Format the output using markdown. Do not include thinking, output only the results of research.",
+                "content": "You are performing shallow research on the question provided. Explain the question as accurate as possible while ensuring that it is of reas. Include citations within the text. Format the output using markdown. Output only the results of research.",
             },
             {"role": "user", "content": perplexity_prompt},
         ],
@@ -139,7 +139,7 @@ def get_list_of_topics(md_text):
         messages=[
             {
                 "role": "user",
-                "content": f'Read the following text and give me a list of topics that are notable or I should research on. Write it in the form of a list with no further formatting. Do not include bullets, instead simply have a list where each topic is on a new line by itself. Do not preface the list with anything, just give answers. Do not say anything like "Here is a list of notable topics:"\n\n{md_text}',
+                "content": f'Read the following text and give me a list of topics that are notable or I should research on. Write it in the form of a list with no further formatting. Do not include bullets, instead simply have a list where each topic is on a new line by itself. Do not preface the list with anything, just give answers. Do not say anything like \"Here is a list of notable topics:\"\n\n{md_text}',
             }
         ],
         model="llama3-8b-8192",

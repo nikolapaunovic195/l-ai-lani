@@ -9,12 +9,36 @@ function App() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [topics, setTopics] = useState([]);
   const [showPanels, setShowPanels] = useState(false);
+  const [flashcards, setFlashcards] = useState([]);
+  const [researchText, setResearchText] = useState("");
+  const [deepResearchText, setDeepResearchText] = useState("");
 
-  // Ensure the function correctly handles file & topics
+  // Handle file upload
   const handleFileUpload = (file, topics = []) => {
     setSelectedFile(file);
     setTopics(topics);
     setShowPanels(true);
+  };
+
+  // Function to update flashcards when received from LeftPanel
+  const handleFlashcardsUpdate = (newFlashcards) => {
+    setFlashcards(newFlashcards);
+    setResearchText(""); // Clear other content types
+    setDeepResearchText("");
+  };
+
+  // Function to update research text
+  const handleResearchUpdate = (text) => {
+    setResearchText(text);
+    setFlashcards([]); // Clear other content types
+    setDeepResearchText("");
+  };
+
+  // Function to update deep research text
+  const handleDeepResearchUpdate = (text) => {
+    setDeepResearchText(text);
+    setFlashcards([]); // Clear other content types
+    setResearchText("");
   };
 
   return (
@@ -24,8 +48,17 @@ function App() {
       {showPanels && (
         <main className="main-content">
           <div className="panel-container">
-            <LeftPanel topics={topics} />
-            <RightPanel />
+            <LeftPanel 
+              topics={topics} 
+              updateFlashcards={handleFlashcardsUpdate}
+              updateResearch={handleResearchUpdate}
+              updateDeepResearch={handleDeepResearchUpdate}
+            />
+            <RightPanel 
+              flashcards={flashcards} 
+              researchText={researchText}
+              deepResearchText={deepResearchText}
+            />
           </div>
         </main>
       )}
