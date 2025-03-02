@@ -35,6 +35,3 @@ Below are the design principles that guided our Lailani visuals.
 - Rowwel Ponesto - Back-end developer
 - Patrick Gatpandan - Front-end developer
 - Xiaojun Gong - Front-end developer
-
-© 2025 snail pace creations. All rights reserved. <br>
-This software and its contents may not be copied, modified, or distributed without explicit permission from snail pace creations.
