@@ -10,16 +10,22 @@ We used React as a front end, and Flask for the backend. Our main logic for gath
 
 # Core Features
 
-Smart File Upload
-Upload PDFs, DOCs, TXTs, and Markdown files
-AI scans the file and extracts important topics automatically
+- Smart File Upload
+- Upload PDFs, DOCs, TXTs, and Markdown files
+- AI scans the file and extracts important topics automatically
 
 # Flashcard Generation
 
-Groq AI instantly creates flashcards based on uploaded content
-Flashcards cover key points, definitions, and questions
+- Groq AI instantly creates flashcards based on uploaded content
+- Flashcards cover key points, definitions, and questions
 
 # AI-Powered Research
 
-Research Mode: Uses Perplexity AI for AI-driven explanations
-Deep Research Mode: Provides in-depth analysis with Sonar Deep Research
+- Research Mode: Uses Perplexity AI for AI-driven explanations
+- Deep Research Mode: Provides in-depth analysis with Sonar Deep Research
+
+  # Contributors
+- Nikola Paunovic - Back-end developer
+- Rowwel Ponesto - Back-end developer
+- Patrick Gatpandan - Front-end developer
+- Xiaojun Gong - Front-end developer
