@@ -18,7 +18,7 @@ We used React as a front end, and Flask for the backend. Our main logic for gath
 
 Below are the design principles that guided our Lailani visuals.
 
-![lailani_thumbnail](imgs/lailani_design_principles.jpg)
+![lailani_thumbnail](imgs/lailani_Design_Principles.jpg)
 
 # Flashcard Generation
 
