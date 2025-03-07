@@ -55,8 +55,8 @@ const RightPanel = ({ flashcards, researchText, deepResearchText }) => {
                         onMouseMove={handleMouseMove}
                         onMouseLeave={handleMouseLeave}
                     />
-                    <p className="right-panel-text">Welcome to l(ai)lani</p>
-                    <p className="right-panel-text-smaller">Select topics to continue</p>
+                    <h1 className="right-panel-text">welcome to l(ai)lani</h1>
+                    <p className="right-panel-text-smaller">select topics to continue</p>
                 </div>
             </section>
         );
