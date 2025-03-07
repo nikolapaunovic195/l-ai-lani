@@ -1,8 +1,8 @@
 .right-panel {
   flex-grow: 1;
   background: white;
-  border-radius: 10px;
-  padding: 20px;
+  border-radius: 15px;
+  padding: 30px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
   font-family: "Playfair Display", serif;
   overflow: hidden;
@@ -19,6 +19,21 @@
   height: 100%;
 }
 
+.right-panel-empty h1 {
+  font-size: 2rem;
+  color: #cccccc;
+  font-weight: bold;
+  font-family: Playfair Display, serif;
+  margin: 0;
+}
+
+.right-panel-empty p {
+  font-size: 1.2rem;
+  color: #cccccc;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
 .flashcards-subpanel,
 .text-subpanel {
   height: 100%;
@@ -29,7 +44,9 @@
 
 .flashcards-subpanel h2,
 .text-subpanel h2 {
-  margin-bottom: 15px;
+  text-align: left;
+  margin-top:0px;
+  margin-bottom: 5px;
   font-weight: bold;
 }
 
@@ -37,9 +54,19 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
-  padding: 10px;
+  padding: 15px 0px 15px 0px;
   overflow-y: auto;
   max-height: calc(100% - 50px);
+  -webkit-mask-image: linear-gradient(to bottom,
+      transparent 0px,
+      black 20px,
+      black calc(100% - 20px),
+      transparent 100%);
+  mask-image: linear-gradient(to bottom,
+      transparent 0px,
+      black 20px,
+      black calc(100% - 20px),
+      transparent 100%);
 }
 
 .flashcard {
@@ -91,6 +118,7 @@
 .flashcard-back {
   border: 2px solid #A093C7;
   transform: rotateY(180deg);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .flashcard-front p {
@@ -116,12 +144,12 @@
 }
 
 .text-content {
-  padding: 15px;
+  padding: 0px;
   overflow-y: auto;
   max-height: calc(100% - 50px);
   background: white;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   text-align: left;
   line-height: 1.6;
 }
@@ -162,7 +190,6 @@
 .flashcard-grid {
   overflow-y: auto;
   overflow-x: visible;
-  padding: 10px 20px;
 }
 
 @media (max-width: 1200px) {
@@ -176,8 +203,8 @@
 }
 
 .lailani-logo-mono {
-  width: 40%;              
-  height: auto;
+  width: auto;              
+  height: 40%;
   transition: opacity 0.3s ease, transform 0.1s ease;
 }
 
