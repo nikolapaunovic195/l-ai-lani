@@ -117,7 +117,7 @@ def get_list_of_topics(md_text):
     response = client.chat.completions.create(
         messages=[
             {
-                "role": "user",
+                "role": "system",
                 "content": f'Read the following text and give me a list of topics that are notable or I should research on. Write it in the form of a list with no further formatting. Do not include bullets, instead simply have a list where each topic is on a new line by itself. Do not preface the list with anything, just give answers. Do not say anything like \"Here is a list of notable topics:\"\n\n{md_text}',
             }
         ],
@@ -130,8 +130,12 @@ def get_flashcard(prompt):
     response = client.chat.completions.create(
         messages=[
             {
+                "role": "system",
+                "content": f'You are creating the content for the back of flashcards. Given the prompt, return only the definition. Do not introduce the term or provide any context. Keep the definition concise and to the point. Do not include any formatting. Do not include the prompt in the response. Do not include any citations. Do not include any references to the prompt. Do not include any examples. Do not include any additional information. Do not include any additional context'
+            },
+            {
                 "role": "user",
-                "content": f'If "{prompt}" is the front side of a flashcard, what would be the back side of the flashcard? Write it in the form of a single sentence with no further formatting.',
+                "content": f"{prompt}"
             }
         ],
         model="llama3-8b-8192",
