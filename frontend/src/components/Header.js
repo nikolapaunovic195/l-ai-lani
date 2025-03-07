@@ -1,6 +1,6 @@
 import React from "react";
 import "../components/Header.css";
-import logo from "../assets/lailani_app_icon_800.png";
+import logo from "../assets/lailani_app_icon_800_transp.png";
 
 
 const Header = ({ selectedFile }) => {
