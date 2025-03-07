@@ -48,6 +48,7 @@
     right: 6%;
     transform: translateX(50%);
     margin-top: 0;
+    opacity: 0;
 }
 
 .upload-message {
