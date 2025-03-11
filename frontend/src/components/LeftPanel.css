@@ -45,6 +45,13 @@
       transparent 100%);
 }
 
+.disclaimer {
+  font-size: small;
+  font-family: 'Arial', sans-serif;
+  color: #777;
+  align-self: center;
+}
+
 .topics-list::-webkit-scrollbar {
   width: 10px;
 }

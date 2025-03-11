@@ -154,7 +154,6 @@ const LeftPanel = ({ topics: initialTopics, updateFlashcards, updateResearch, up
           </div>
         ))}
       </div>
-
       <div className="button-group">
         <button className="flashcards-btn" onClick={() => handleButtonClick("flashcards")}>
           Generate Flashcards
@@ -165,6 +164,9 @@ const LeftPanel = ({ topics: initialTopics, updateFlashcards, updateResearch, up
         <button className="deep-research-btn" onClick={() => handleButtonClick("deep")}>
           Deep Research
         </button>
+      </div>
+      <div className="disclaimer">
+        <p>AI results may sometimes be unpredictable or inaccurate.</p>
       </div>
     </section>
   );
